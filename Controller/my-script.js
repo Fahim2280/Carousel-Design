@@ -20,9 +20,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
-    <img src="Image/${photo}" alt="${title}">
-    <h3>${title}</h3>
-    <p>${truncateText(description, 150)}</p> <!-- Truncate text for design -->
+  
+    <div class = "card_image">
+      <img src="Image/${photo}" alt="${title}">
+    
+       <div class = "card_descripton">
+      <h3>${title}</h3>
+      <p>${truncateText(description, 150)}</p> <!-- Truncate text for design -->
+     </div>
+    </div>
+
+    
   `;
     carouselTrack.appendChild(card);
   });
