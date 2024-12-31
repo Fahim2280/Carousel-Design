@@ -19,16 +19,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
-  
-    <div class = "card_image">
-      <img src="Image/${photo}" alt="${title}">
-    
-       <div class = "card_descripton">
-      <h3>${title}</h3>
-      <p>${truncateText(description, 150)}</p> <!-- Truncate text for design -->
-     </div>
-    </div> 
-  `;
+      <div class="card_image">
+        <img src="Image/${photo}" alt="${title}">
+        <div class="card_descripton">
+          <h3>${title}</h3>
+          <p>${truncateText(
+            description,
+            150
+          )}</p> <!-- Truncate text for design -->
+        </div>
+      </div>
+    `;
     carouselTrack.appendChild(card);
   });
 
@@ -54,18 +55,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const moveToIndex = (index) => {
     currentIndex = (index + totalCards) % totalCards;
+    carouselTrack.style.transition = "transform 0.5s ease-in-out";
     carouselTrack.style.transform = `translateX(-${
-      currentIndex * (100 / visibleCards)
+      currentIndex * (100 / totalCards)
     }%)`;
     updateDots();
   };
 
-  prevButton.addEventListener("click", () =>
-    moveToIndex(currentIndex - visibleCards)
-  );
-  nextButton.addEventListener("click", () =>
-    moveToIndex(currentIndex + visibleCards)
-  );
+  prevButton.addEventListener("click", () => {
+    moveToIndex(currentIndex - visibleCards);
+  });
+
+  nextButton.addEventListener("click", () => {
+    moveToIndex(currentIndex + visibleCards);
+  });
 
   updateDots();
 });
