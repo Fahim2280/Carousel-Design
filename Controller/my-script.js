@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const prevButton = document.getElementById("prev");
   const nextButton = document.getElementById("next");
   const pagination = document.querySelector(".pagination");
-  const visibleCards = 1; // Change this to set the number of visible cards
+  const visibleCards = 1;
   let currentIndex = 0;
 
   const response = await fetch("./Model/book-description.json");
@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       : text;
   };
 
-  // Render cards dynamically
   cards.forEach(({ photo, title, description }) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -28,19 +27,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       <h3>${title}</h3>
       <p>${truncateText(description, 150)}</p> <!-- Truncate text for design -->
      </div>
-    </div>
-
-    
+    </div> 
   `;
     carouselTrack.appendChild(card);
   });
 
   const totalCards = cards.length;
 
-  // Set track width
   carouselTrack.style.width = `${(totalCards / visibleCards) * 100}%`;
 
-  // Pagination
   cards.forEach((_, index) => {
     const dot = document.createElement("span");
     dot.addEventListener("click", () => {
