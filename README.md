@@ -86,10 +86,5 @@ You can edit these variables in `my-styles.css` to match your requirements.
 
 ---
 
-## License
-This project is open-source and available under the MIT License.
-
----
-
 ## Contact
 For any queries or suggestions, feel free to reach out via the project's repository.
